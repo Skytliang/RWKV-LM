@@ -9,13 +9,19 @@
 #
 #######################################################################################################################
 #
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+WORK_DIR=$SCRIPT_DIR/../../..
+DATA_DIR=$WORK_DIR/data/minipile/minipile
+#
+#######################################################################################################################
+#
 MODEL_TYPE="x070" # x060 => rwkv-6.0
 #
 N_LAYER="12"
 N_EMBD="768"
 #
 CTX_LEN="512" # !!! change magic_prime if you change ctx_len !!!
-PROJ_DIR="out/L"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE # set output folder
+PROJ_DIR="$WORK_DIR/models/L"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE # set output folder
 #
 #######################################################################################################################
 #
@@ -41,10 +47,7 @@ GPU_PER_NODE=3 # number of GPUs per node
 #
 DS_BUCKET_MB=2 # set to 2 for consumer GPUs, set to 200 for A100 / H100 (affects speed & vram usage)
 #
-WORK_DIR=$(cd $(dirname $0); pwd)
-DATA_DIR=$WORK_DIR/data/minipile/minipile
-
-python train.py --load_model "0" --wandb "Test" --proj_dir $PROJ_DIR --my_testing $MODEL_TYPE \
+python train.py --wandb "c74d06fd3238b20d6ef7bcb8062d96218d70597f" --load_model "0" --wandb "Test" --proj_dir $PROJ_DIR --my_testing $MODEL_TYPE \
  --ctx_len $CTX_LEN --train_stage 3 --epoch_count 999999 --epoch_begin 0 \
  --data_file $DATA_DIR --my_exit_tokens 1498226207 --magic_prime 2926181 \
  --num_nodes $N_NODE --micro_bsz $M_BSZ --n_layer $N_LAYER --n_embd $N_EMBD \
