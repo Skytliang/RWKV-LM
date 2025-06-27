@@ -17,7 +17,7 @@ DATA_DIR=$WORK_DIR/data/minipile/minipile
 #
 MODEL_TYPE="x070" # x060 => rwkv-6.0
 #
-N_LAYER="30"
+N_LAYER="34"
 N_EMBD="2560"
 #
 CTX_LEN="512" # !!! change magic_prime if you change ctx_len !!!
