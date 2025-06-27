@@ -100,7 +100,7 @@ class MMapIndexedDataset(torch.utils.data.Dataset):
                     self._file.close()
 
             return _Writer()
-        
+
         def __init__(self, path, skip_warmup=False):
             with open(path, "rb") as stream:
                 magic_test = stream.read(9)
@@ -182,7 +182,7 @@ class MMapIndexedDataset(torch.utils.data.Dataset):
         return self._path
 
     def __setstate__(self, state):
-        self._do_init(state)
+        self._do_init(state, skip_warmup=False)
 
     def _do_init(self, path, skip_warmup):
         self._path = path
