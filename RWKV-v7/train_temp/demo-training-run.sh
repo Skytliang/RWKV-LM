@@ -21,8 +21,8 @@ N_LAYER="32"
 N_EMBD="2560"
 #
 CTX_LEN="512" # !!! change magic_prime if you change ctx_len !!!
-# PROJ_DIR="$WORK_DIR/models/L"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE # set output folder
-PROJ_DIR=$WORK_DIR/models/L12-D768-x070
+PROJ_DIR="$WORK_DIR/models/L"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE # set output folder
+# PROJ_DIR=$WORK_DIR/models/L12-D768-x070
 #
 #######################################################################################################################
 #
